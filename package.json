@@ -1,16 +1,18 @@
 {
-  "name": "gist",
-  "version": "1.0.0",
+  "name": "gistly",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "src/index.js",
+  "bin": {
+    "gist": "./src/index.js"
   },
+  "scripts": {},
   "keywords": [],
   "author": "Dongsheng Cai <d@tux.im> (http://dongsheng.org/)",
   "license": "BSD-2-Clause",
   "dependencies": {
+    "commander": "^5.1.0",
     "graphql-request": "^1.8.2",
-    "graphql-tag": "^2.10.3"
+    "ini": "^1.3.5"
   }
 }
