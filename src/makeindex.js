@@ -33,7 +33,7 @@ async function makeIndex(token) {
   });
 
   const data = await graphQLClient.request(query);
-  fs.writeFileSync('./out.json', JSON.stringify(data));
+  // fs.writeFileSync('./out.json', JSON.stringify(data));
   // const data = require('./out.json');
   const login = data.viewer.login;
   const homeUrl = data.viewer.url;
