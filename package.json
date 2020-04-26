@@ -6,7 +6,9 @@
   "bin": {
     "gist": "./src/index.js"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "true"
+  },
   "keywords": [],
   "author": "Dongsheng Cai <d@tux.im> (http://dongsheng.org/)",
   "license": "BSD-2-Clause",
