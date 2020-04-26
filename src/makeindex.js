@@ -1,7 +1,7 @@
 const { GraphQLClient } = require('graphql-request');
 const fs = require('fs');
 
-async function makeIndex(token) {
+async function makeIndex(token, options) {
   const endpoint = 'https://api.github.com/graphql';
   const query = `
     {
@@ -60,6 +60,10 @@ async function makeIndex(token) {
       txt += '\n';
     }
   });
+  if (options.hasFooter) {
+    txt += '\n---\n';
+    txt += '❤️ [built with gistly](https://github.com/dcai/gistly)';
+  }
   console.info(txt);
 }
 

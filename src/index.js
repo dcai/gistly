@@ -8,18 +8,29 @@ program.version(packageJson.version, '-v, --vers', 'output the current version')
 
 program
   .command('index')
-  .alias('i')
+  .option('--no-footer', 'no footer promo link', false)
   .description('Create gist index')
-  .action(async function() {
+  .action(async function (args) {
     const token = getConfig('token');
-    await makeIndex(token);
+    if (!token) {
+      console.error(
+        'Please create your personal token with gist permission from: https://github.com/settings/tokens/new',
+      );
+      console.error('gist init --token <github personal token>');
+      return;
+    }
+    const options = {
+      hasFooter: args.footer,
+    };
+    await makeIndex(token, options);
   });
+
 program
   .command('init')
   .description('init github access')
-  .requiredOption('-t, --token', 'github access token')
-  .action(async function(_, args) {
-    const token = args[0];
+  .requiredOption('-t, --token <string>', 'github access token')
+  .action(async function (options) {
+    const token = options.token;
     setConfig('token', token);
   });
 
