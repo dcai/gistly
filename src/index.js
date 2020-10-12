@@ -4,7 +4,7 @@ const packageJson = require('../package.json');
 const { makeIndex } = require('./makeindex');
 const { updateIndex } = require('./updateindex');
 const { createIndex } = require('./createindex');
-const { getConfig, setConfig } = require('./config');
+const { getConfig, setConfig, deleteConfig } = require('./config');
 
 program.version(packageJson.version, '-v, --vers', 'output the current version');
 
@@ -46,6 +46,22 @@ program
   .action(async function (options) {
     const token = options.token;
     setConfig('token', token);
+  });
+
+program
+  .command('link')
+  .description('link to existing index gist')
+  .requiredOption('-g, --gist-id <string>', 'gist id')
+  .action(async function (options) {
+    const gistId = options.gistId;
+    setConfig('gistId', gistId);
+  });
+
+program
+  .command('unlink')
+  .description('unlink from linked index gist')
+  .action(async function () {
+    deleteConfig('gistId');
   });
 
 program.parse(process.argv);
