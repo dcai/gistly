@@ -23,4 +23,9 @@ module.exports = {
     const config = ini.parse(readConfig());
     return config[name];
   },
+  deleteConfig: (name) => {
+    const config = ini.parse(readConfig());
+    delete config[name];
+    fs.writeFileSync(filepath, ini.stringify(config));
+  },
 };
