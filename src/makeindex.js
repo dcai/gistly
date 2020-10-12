@@ -64,7 +64,7 @@ async function makeIndex(token, options) {
     txt += '\n---\n';
     txt += '❤️ [built with gistly](https://github.com/dcai/gistly)';
   }
-  console.info(txt);
+  return txt;
 }
 
 module.exports = {
