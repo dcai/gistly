@@ -8,7 +8,7 @@ async function makeIndex(token, options) {
       viewer {
         login
         url
-        gists(first: 100, orderBy: { field: CREATED_AT, direction: ASC }) {
+        gists(first: 100, orderBy: { field: CREATED_AT, direction: ${options.orderDirection} }) {
           edges {
             node {
               isPublic
