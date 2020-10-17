@@ -12,6 +12,7 @@ program
   .command('index')
   .option('--no-footer', 'no footer promo link', false)
   .option('-p, --put', 'put the created gist index on the server', false)
+  .option('-r, --reverse-order', 'reverse the index order', false)
   .description('Create gist index')
   .action(async function (args) {
     const token = getConfig('token');
@@ -24,6 +25,7 @@ program
     }
     const options = {
       hasFooter: args.footer,
+      orderDirection: args.reverseOrder ? 'DESC' : 'ASC',
     };
     const txt = await makeIndex(token, options);
     console.info(txt);
