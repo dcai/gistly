@@ -1,17 +1,25 @@
 {
   "name": "gistly",
   "version": "1.1.5",
-  "description": "",
+  "description": "github gist index generator",
+  "homepage": "https://github.com/dcai/gistly#gistly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcai/gistly.git"
+  },
   "main": "src/index.js",
+  "author": "Dongsheng Cai <d@tux.im> (http://dongsheng.org/)",
+  "license": "BSD-2-Clause",
+  "keywords": [
+    "gist",
+    "github"
+  ],
   "bin": {
     "gistly": "./src/index.js"
   },
   "scripts": {
     "test": "true"
   },
-  "keywords": [],
-  "author": "Dongsheng Cai <d@tux.im> (http://dongsheng.org/)",
-  "license": "BSD-2-Clause",
   "dependencies": {
     "@octokit/rest": "^18.0.6",
     "commander": "^5.1.0",
