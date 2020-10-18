@@ -1,6 +1,6 @@
 {
   "name": "gistly",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "github gist index generator",
   "homepage": "https://github.com/dcai/gistly#gistly",
   "repository": {
