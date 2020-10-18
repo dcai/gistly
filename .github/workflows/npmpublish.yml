@@ -19,7 +19,7 @@ jobs:
   #     - run: npm ci
   #     - run: npm test
 
-  bump-version:
+  npm-publish:
     # needs: test
     runs-on: ubuntu-latest
     steps:
