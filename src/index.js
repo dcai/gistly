@@ -45,8 +45,11 @@ program
   .command('init')
   .description('init github access')
   .requiredOption('-t, --token <string>', 'github access token')
+  .option('-g, --gist-id <string>', 'set the gist id to store the index')
   .action(async function (options) {
     const token = options.token;
+    const gistId = options.gistId;
+    setConfig('gistId', gistId);
     setConfig('token', token);
   });
 
