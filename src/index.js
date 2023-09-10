@@ -12,9 +12,9 @@ program
   .command('index')
   .option('--no-footer', 'no footer promo link', true)
   .option('--include-private', 'include private gists', false)
-  .option('-p, --put', 'put the created gist index on the server', false)
+  .option('-p, --put', 'put the created gist index markdown file to linked gist', false)
   .option('-r, --reverse-order', 'reverse the index order', false)
-  .description('Create gist index')
+  .description('create gist index in markdown format')
   .action(async function (args) {
     const token = getConfig('token');
     if (!token) {
@@ -45,7 +45,7 @@ program
 
 program
   .command('init')
-  .description('init github access')
+  .description('initialise github access config')
   .requiredOption('-t, --token <string>', 'github access token')
   .option('-g, --gist-id <string>', 'set the gist id to store the index')
   .action(async function (options) {

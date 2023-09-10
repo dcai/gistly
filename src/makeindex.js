@@ -3,12 +3,15 @@ const fs = require('fs');
 
 async function makeIndex(token, options) {
   const endpoint = 'https://api.github.com/graphql';
+
+  const privacy = options.includePrivate ? 'ALL' : 'PUBLIC';
+
   const query = `
     {
       viewer {
         login
         url
-        gists(first: 100, orderBy: { field: CREATED_AT, direction: ${options.orderDirection} }, privacy: ALL) {
+        gists(first: 100, orderBy: { field: CREATED_AT, direction: ${options.orderDirection} }, privacy: ${privacy}) {
           edges {
             node {
               isPublic
