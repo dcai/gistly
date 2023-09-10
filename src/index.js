@@ -10,7 +10,8 @@ program.version(packageJson.version, '-v, --vers', 'output the current version')
 
 program
   .command('index')
-  .option('--no-footer', 'no footer promo link', false)
+  .option('--no-footer', 'no footer promo link', true)
+  .option('--include-private', 'include private gists', false)
   .option('-p, --put', 'put the created gist index on the server', false)
   .option('-r, --reverse-order', 'reverse the index order', false)
   .description('Create gist index')
@@ -26,6 +27,7 @@ program
     const options = {
       hasFooter: args.footer,
       orderDirection: args.reverseOrder ? 'DESC' : 'ASC',
+      includePrivate: args.includePrivate,
     };
     const txt = await makeIndex(token, options);
     console.info(txt);

@@ -8,7 +8,7 @@
     "url": "https://github.com/dcai/gistly.git"
   },
   "main": "src/index.js",
-  "author": "Dongsheng Cai <d@tux.im> (http://dongsheng.org/)",
+  "author": "Dongsheng Cai <d@tux.im> (https://tux.im/)",
   "license": "BSD-2-Clause",
   "keywords": [
     "gist",
@@ -21,10 +21,13 @@
     "test": "true"
   },
   "dependencies": {
-    "@octokit/rest": "^18.6.7",
-    "commander": "^5.1.0",
-    "graphql": "^15.5.1",
-    "graphql-request": "^3.4.0",
-    "ini": "^2.0.0"
+    "@octokit/rest": "^20.0.1",
+    "commander": "^11.0.0",
+    "graphql": "^16.8.0",
+    "graphql-request": "^6.1.0",
+    "ini": "^4.1.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3"
   }
 }

@@ -8,7 +8,7 @@ async function makeIndex(token, options) {
       viewer {
         login
         url
-        gists(first: 100, orderBy: { field: CREATED_AT, direction: ${options.orderDirection} }) {
+        gists(first: 100, orderBy: { field: CREATED_AT, direction: ${options.orderDirection} }, privacy: ALL) {
           edges {
             node {
               isPublic
@@ -43,7 +43,7 @@ async function makeIndex(token, options) {
   txt += '\n';
   gists.forEach((item) => {
     const gist = item.node;
-    if (!gist.isPublic) {
+    if (!gist.isPublic && !options.includePrivate) {
       return;
     }
     const hasOneFile = gist.files.length === 1;
@@ -54,7 +54,7 @@ async function makeIndex(token, options) {
     const icon = hasOneFile ? '📜' : '📦';
     // const url = gist.url;
     const url = `https://gist.github.com/${login}/${gist.name}`;
-    txt += `* ${icon} [${files}](${url})`;
+    txt += `* ${icon} [${files}](${url})${gist.isPublic ? '' : ' 🔒'}`;
     txt += '\n';
     if (gist.description) {
       txt += `  * \`gist:${gist.name}\` ${gist.description}`;
