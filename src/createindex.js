@@ -1,21 +1,24 @@
-const { Octokit } = require('@octokit/rest');
-
 async function createIndex(token, content) {
-  const octokit = new Octokit({
-    auth: token,
-  });
-  const gist = await octokit.gists.create({
-    description: 'gist index',
-    public: true,
-    files: {
-      'index.md': {
-        content,
-      },
+  const response = await fetch('https://api.github.com/gists', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      description: 'gist index',
+      public: true,
+      files: {
+        'index.md': {
+          content,
+        },
+      },
+    }),
   });
-  return gist;
-}
 
+  return response.json();
+}
 module.exports = {
   createIndex,
 };

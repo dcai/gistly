@@ -7,9 +7,8 @@ const filepath = `${os.homedir()}/.gist.ini`;
 function readConfig() {
   if (fs.existsSync(filepath)) {
     return fs.readFileSync(filepath, 'utf-8');
-  } else {
-    fs.writeFileSync(filepath, '');
   }
+  fs.writeFileSync(filepath, '');
   return '';
 }
 
