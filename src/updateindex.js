@@ -1,17 +1,23 @@
-const { Octokit } = require('@octokit/rest');
-
 async function updateIndex(token, gistId, content) {
-  const octokit = new Octokit({
-    auth: token,
-  });
-  await octokit.gists.update({
-    gist_id: gistId,
-    files: {
-      'index.md': {
-        content,
-      },
+  const response = await fetch(`https://api.github.com/gists/${gistId}`, {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/vnd.github.v3+json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      files: {
+        'index.md': {
+          content,
+        },
+      },
+    }),
   });
+
+  if (!response.ok) {
+    throw new Error(`Failed to update gist: ${response.status} ${response.statusText}`);
+  }
 }
 
 module.exports = {

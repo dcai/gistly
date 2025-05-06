@@ -1,9 +1,5 @@
-const { GraphQLClient } = require('graphql-request');
-const fs = require('fs');
-
 async function makeIndex(token, options) {
   const endpoint = 'https://api.github.com/graphql';
-
   const privacy = options.includePrivate ? 'ALL' : 'PUBLIC';
 
   const query = `
@@ -29,17 +25,18 @@ async function makeIndex(token, options) {
     }
   `;
 
-  const graphQLClient = new GraphQLClient(endpoint, {
+  const response = await fetch(endpoint, {
+    method: 'POST',
     headers: {
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({ query }),
   });
 
-  const data = await graphQLClient.request(query);
-  // fs.writeFileSync('/tmp/out.json', JSON.stringify(data));
+  const { data } = await response.json();
   const login = data.viewer.login;
   const homeUrl = data.viewer.url;
-
   const gists = data.viewer.gists.edges;
 
   let txt = `## 📇 [@${login}](${homeUrl})'s gist index`;
@@ -55,7 +52,6 @@ async function makeIndex(token, options) {
       .sort()
       .join(', ');
     const icon = hasOneFile ? '📜' : '📦';
-    // const url = gist.url;
     const url = `https://gist.github.com/${login}/${gist.name}`;
     txt += `* ${icon} [${files}](${url})${gist.isPublic ? '' : ' 🔒'}`;
     txt += '\n';
@@ -70,7 +66,6 @@ async function makeIndex(token, options) {
   }
   return txt;
 }
-
 module.exports = {
   makeIndex,
 };

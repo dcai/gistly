@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const program = require('commander');
+const { program } = require('commander');
 const packageJson = require('../package.json');
 const { makeIndex } = require('./makeindex');
 const { updateIndex } = require('./updateindex');
