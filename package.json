@@ -1,9 +1,11 @@
 {
   "name": "gistly",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "github gist index generator",
   "homepage": "https://github.com/dcai/gistly#gistly",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "bin": {
     "gistly": "dist/main.js"
   },
@@ -18,7 +20,10 @@
   },
   "author": "Dongsheng Cai",
   "license": "BSD-2-Clause",
-  "keywords": ["gist", "github"],
+  "keywords": [
+    "gist",
+    "github"
+  ],
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=9"
