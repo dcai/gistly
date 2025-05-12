@@ -1,5 +1,6 @@
 # gistly
 [![npm publish](https://github.com/dcai/gistly/actions/workflows/npmpublish.yml/badge.svg)](https://github.com/dcai/gistly/actions/workflows/npmpublish.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dcai/gistly)
 
 gist cli for gist.github.com, it could build a neat gist list in markdown format, for example:
 <https://gist.github.com/dcai/907013>
